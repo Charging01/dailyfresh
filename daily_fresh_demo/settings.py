@@ -22,6 +22,10 @@ INSTALLED_APPS = [
     'df_user',
     'df_order',
 
+    # 'apps.df_cart',
+    # 'apps.df_goods',
+    # 'apps.df_user',
+    # 'apps.df_order',
     'tinymce',  # 使用富文本编辑框要在settings文件中安装
 ]
 

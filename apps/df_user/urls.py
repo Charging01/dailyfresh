@@ -8,7 +8,7 @@ app_name = 'df_user'
 
 urlpatterns = [
     url(r'^register/$', register, name="register"),
-    url(r'^register_handle/$', register_handle, name="register_handle"),
+    url(r'^register_handle/$', register_handle, name="register_handle"),   # 注册处理
     url(r'^register_exist/$', register_exist, name="register_exist"),
     url(r'^login/$', login, name="login"),
     url(r'^login_handle/$', login_handle, name="login_handle"),

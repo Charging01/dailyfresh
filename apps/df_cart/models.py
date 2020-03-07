@@ -11,14 +11,21 @@ from df_goods.models import GoodsInfo
 
 
 class CartInfo(models.Model):
-
+    # verbose_name 获取字段名  on_delete=models.CASCADE联级删除，当从表数据删除时，主表数据也删除
     user = models.ForeignKey(UserInfo, on_delete=models.CASCADE, verbose_name="用户")
     goods = models.ForeignKey(GoodsInfo, on_delete=models.CASCADE, verbose_name="商品")
     count = models.IntegerField(verbose_name="", default=0)  # 记录用户买个多少单位的商品
 
+    # 元选项，自定义表的名字，默认名字为 < app_name > _ < model_name
+
+
     class Meta:
-        verbose_name = "购物车"
+        verbose_name = "购物车"       # 指定在admin管理界面中显示中文
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.user.uname + '的购物车'
+        return self.user.uname + '的购物车'     # verbose_name_plural表示复数形式的显示；
+                                               # 中文的单数和复数一般不作区别。
+
+
+

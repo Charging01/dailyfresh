@@ -3,14 +3,17 @@ from django.db import models
 from df_goods.models import GoodsInfo
 from df_user.models import UserInfo
 
-class OrderInfo(models.Model):  # 大订单
+
+# 订单商品表
+class OrderInfo(models.Model):
     oid = models.CharField(max_length=20, primary_key=True, verbose_name="大订单号")
     user = models.ForeignKey(UserInfo, on_delete=models.CASCADE, verbose_name="订单用户")
     odate = models.DateTimeField(auto_now=True, verbose_name="时间")
     oIsPay = models.BooleanField(default=False, verbose_name="是否支付")
     ototal = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="总价")
     oaddress = models.CharField(max_length=150, verbose_name="订单地址")
-    # 虽然订单总价可以由多个商品的单价以及数量求得，但是由于用户订单的总价的大量使用，忽略total的冗余度
+    # 虽然订单总价可以由多个商品的单价以及数量求得，但是由于用户订单的总价的大量使用，
+    # 为了避免经常读取数据，将‘总价’放在‘订单商品表’中。忽略total的冗余度
 
     class Meta:
         verbose_name = "订单"

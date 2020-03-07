@@ -9,6 +9,7 @@ from . import user_decorator
 from df_order.models import *
 
 
+# 注册显示页面
 def register(request):
 
     context = {
@@ -17,13 +18,16 @@ def register(request):
     return render(request, 'df_user/register.html', context)
 
 
+# 注册处理
 def register_handle(request):
 
+    # 接收数据
     username = request.POST.get('user_name')
     password = request.POST.get('pwd')
     confirm_pwd = request.POST.get('confirm_pwd')
     email = request.POST.get('email')
 
+    # 数据校验
     # 判断两次密码一致性
     if password != confirm_pwd:
         return redirect('/user/register/')
@@ -32,22 +36,27 @@ def register_handle(request):
     s1.update(password.encode('utf8'))
     encrypted_pwd = s1.hexdigest()
 
-    # 创建对象
+    # 创建对象 django自带创建user
     UserInfo.objects.create(uname=username, upwd=encrypted_pwd, uemail=email)
     # 注册成功
     context = {
         'title': '用户登陆',
         'username': username,
     }
+
+
+
+
     return render(request, 'df_user/login.html', context)
 
-
+# 注册退出
 def register_exist(request):
     username = request.GET.get('uname')
     count = UserInfo.objects.filter(uname=username).count()
     return JsonResponse({'count': count})
 
 
+# 登录页面
 def login(request):
     uname = request.COOKIES.get('uname', '')
     context = {
@@ -59,12 +68,13 @@ def login(request):
     return render(request, 'df_user/login.html', context)
 
 
+# 登录处理
 def login_handle(request):  # 没有利用ajax提交表单
     # 接受请求信息
     uname = request.POST.get('username')
     upwd = request.POST.get('pwd')
     jizhu = request.POST.get('jizhu', 0)
-    users = UserInfo.objects.filter(uname=uname)
+    users = UserInfo.objects.filter(uname=uname)       # 取出用户信息中的名字，并进行判断是否相等
     if len(users) == 1:  # 判断用户密码并跳转
         s1 = sha1()
         s1.update(upwd.encode('utf8'))
@@ -101,7 +111,7 @@ def login_handle(request):  # 没有利用ajax提交表单
 
 def logout(request):  # 用户登出
     request.session.flush()  # 清空当前用户所有session
-    return redirect(reverse("df_goods:index"))
+    return redirect(reverse("df_goods:index"))        # 反向解析
 
 
 @user_decorator.login

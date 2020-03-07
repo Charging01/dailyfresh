@@ -19,7 +19,7 @@ class TypeInfo(models.Model):
 
 
 class GoodsInfo(models.Model):
-    # 具体商品信息
+    # 具体商品sku信息
     isDelete = models.BooleanField(default=False)  # 逻辑删除
     gtitle = models.CharField(max_length=20, verbose_name="商品名称", unique=True)
     gpic = models.ImageField(verbose_name='商品图片', upload_to='df_goods/image/%Y/%m', null=True, blank=True)  # 商品图片
@@ -30,7 +30,7 @@ class GoodsInfo(models.Model):
     gjianjie = models.CharField(max_length=200, verbose_name="简介")
     gkucun = models.IntegerField(verbose_name="库存", default=0)
     gcontent = HTMLField(max_length=200, verbose_name="详情")
-    gtype = models.ForeignKey(TypeInfo, on_delete=models.CASCADE, verbose_name="分类")  # 外键关联TypeInfo表
+    gtype = models.ForeignKey(TypeInfo, on_delete=models.CASCADE, verbose_name="分类")  # 外键关联商品种类TypeInfo表
     # gadv = models.BooleanField(default=False) #商品是否推荐
 
     class Meta:

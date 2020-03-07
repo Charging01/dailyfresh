@@ -14,14 +14,14 @@ class UserInfo(models.Model):
     uaddress = models.CharField(max_length=100, default="", verbose_name="地址")
     uyoubian = models.CharField(max_length=6, default="", verbose_name="邮编")
     uphone = models.CharField(max_length=11, default="", verbose_name="手机号")
-    # default,blank是python层面的约束，不影响数据库表结构，修改时不需要迁移 python manage.py makemigrations
+    # default,blank是python层面的约束，不影响数据库表结构，修改时不需要迁移 python3 manage.py makemigrations
 
     class Meta:
         verbose_name = "用户信息"
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.uname
+        return self.uname      # 显示用户姓名
 
 
 class GoodsBrowser(models.Model):
