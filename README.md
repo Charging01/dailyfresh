@@ -20,45 +20,18 @@
 
 [http://39.108.176.210](http://39.108.176.210)
 
-账号：weilanhanf
-
-密码：weilanhanf
-
-### 管理人员入口
-
-[http://39.108.176.210/admin](http://39.108.176.210/admin)
-
-账号：root
-
-密码：rootroot
-
 
 ## 预览：
-### 首页
+
 ![index](https://raw.githubusercontent.com/weilanhanf/Photos/master/DailyFresh/index.png)
 
-### 登录
-![login](https://raw.githubusercontent.com/weilanhanf/Photos/master/DailyFresh/login.png)
 
-### 商品详情
-![goods](https://raw.githubusercontent.com/weilanhanf/Photos/master/DailyFresh/goods.png)
-
-### 购物车
-![cart](https://raw.githubusercontent.com/weilanhanf/Photos/master/DailyFresh/cart.png)
-
-## 安装：
-
-### 依赖包安装
-
-下载文件进入项目目录之后，使用pip安装依赖包
-
-<code>pip install -Ur requirements.txt</code>
 
 ### 数据库配置
 
-数据库默认使用<code>Django</code>项目生成时自动创建的小型数据库<code>sqlite</code>
+数据库默认Django自带的小型数据库<code>sqlite</code>
 
-也可自行配置连接使用MySQL
+
 
 ### 创建超级用户
 
@@ -68,21 +41,15 @@
 
 然后输入相应的超级用户名以及密码，邮箱即可。
 
-### 开始运行
+### 运行
 
 终端下执行:
 
 <code>./python manage.py runserver</code>
 
-浏览器打开: <code>http://127.0.0.1</code> 即可进入普通用户入口
+浏览器打开: <code>http://127.0.0.1:8000</code> 即可进入普通用户入口
 
-浏览器打开: <code>http://127.0.0.1/admin</code> 即可进入超级用户入口
+浏览器打开: <code>http://127.0.0.1:8000/admin</code> 即可进入超级用户入口
 
 
-## 感谢：
 
-感谢您的star
-
-### 联系：
-
-如需联系请前往博客园留言 <a href="https://www.cnblogs.com/welan/p/9231530.html" target="_blank">蔚蓝的蓝</a>
